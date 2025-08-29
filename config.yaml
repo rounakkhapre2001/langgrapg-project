@@ -1,0 +1,20 @@
+agent_config:
+  name: Langie_Customer_Support_Agent
+  input_schema:
+    description: "Initial payload for a customer support ticket."
+    properties:
+      customer_name: { type: "string" }
+      email: { type: "string" }
+      query: { type: "string" }
+      priority: { type: "integer", description: "Initial priority from 1-5" }
+      ticket_id: { type: "string" }
+  
+  stages:
+    - name: INTAKE
+      mode: input_only
+      description: "Accepts the initial customer payload."
+      abilities:
+        - name: accept_payload
+          server: None
+          prompt: "Capture incoming request: {customer_name}, {query}"
+# ... (rest of the YAML content)
